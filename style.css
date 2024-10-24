@@ -1,0 +1,110 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f4f8; /* Color de fondo suave */
+}
+
+/* Contenedor principal */
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    margin: auto;
+}
+
+/* Panel de control */
+.control-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Alinear verticalmente los elementos */
+}
+
+/* Estilos para select y botones */
+select,
+button {
+    padding: 10px 15px; /* Añadir un poco de padding lateral */
+    font-size: 16px;
+    border: 1px solid #007bff; /* Color del borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar el cursor al pasar por encima */
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+/* Efecto al pasar el mouse por encima */
+button {
+    background-color: #007bff; /* Color de fondo azul */
+    color: white; /* Color del texto */
+}
+
+button:hover {
+    background-color: #0056b3; /* Color azul más oscuro al pasar el mouse */
+}
+
+/* Estilos para la lista de autos */
+.auto-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Estilos para las tarjetas de autos */
+.card {
+    background-color: white; /* Fondo blanco */
+    border: 1px solid #ddd; /* Borde gris claro */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: transform 0.2s; /* Efecto al pasar el mouse */
+}
+
+/* Efecto al pasar el mouse sobre la tarjeta */
+.card:hover {
+    transform: scale(1.02); /* Aumentar ligeramente el tamaño */
+    border-color: #007bff; /* Cambiar el borde a azul al pasar el mouse */
+}
+
+/* Estilos para los encabezados y párrafos dentro de las tarjetas */
+.card h4 {
+    margin: 0 0 10px;
+    color: #333; /* Color del texto */
+}
+
+.card p {
+    margin: 5px 0;
+    color: #555; /* Color del texto secundario */
+}
+
+/* Estilos para las acciones dentro de la tarjeta */
+.card .actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* Estilos para los botones dentro de la tarjeta */
+.card button {
+    padding: 5px 10px;
+    background-color: #28a745; /* Color de fondo verde para acciones */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px;
+    cursor: pointer; /* Cambiar el cursor al pasar por encima */
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+/* Efecto al pasar el mouse por encima de los botones en la tarjeta */
+.card button:hover {
+    background-color: #218838; /* Cambiar el fondo a verde más oscuro al pasar el mouse */
+}
+
+/* Botón de eliminar */
+.card .eliminar-btn {
+    background-color: #dc3545; /* Color de fondo rojo para eliminar */
+}
+
+.card .eliminar-btn:hover {
+    background-color: #c82333; /* Cambiar el fondo a rojo más oscuro al pasar el mouse */
+}

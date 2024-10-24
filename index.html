@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autos Sucursales</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <!-- Combo box y botón de agregar -->
+    <div class="control-panel">
+        <select id="sucursalSelect">
+            <option value="1">Local (Alain)</option>
+            <option value="2">David</option>
+        </select>
+        <button id="agregarAutoBtn">Agregar Nuevo Auto</button>
+    </div>
+
+    <!-- Listado de autos -->
+    <div id="autoList" class="auto-list"></div>
+</div>
+
+<script>
+    // Variables y elementos
+    const sucursalSelect = document.getElementById('sucursalSelect');
+    const autoList = document.getElementById('autoList');
+    const agregarAutoBtn = document.getElementById('agregarAutoBtn');
+    const API_URL = 'http://localhost:8080/api/autos/'; // Ajusta la URL según tu backend
+
+    // Función para obtener autos por sucursal
+    function obtenerAutosPorSucursal(sucursalId) {
+        fetch(`${API_URL}${sucursalId}`)
+            .then(response => response.json())
+            .then(autos => {
+                mostrarAutos(autos);
+            })
+            .catch(error => {
+                console.error('Error al obtener los autos:', error);
+            });
+    }
+
+    // Función para mostrar autos en tarjetas
+    function mostrarAutos(autos) {
+        autoList.innerHTML = ''; // Limpiar la lista
+        autos.forEach(auto => {
+            const card = document.createElement('div');
+            card.classList.add('card');
+            card.innerHTML = `
+                <h4>${auto.nombre}</h4>
+                <p><strong>Modelo:</strong> ${auto.modelo}</p>
+                <p><strong>Marca:</strong> ${auto.marca}</p>
+                <p><strong>Color:</strong> ${auto.color}</p>
+                <div class="actions">
+                    <button class="editar-btn">Editar</button>
+                    <button class="eliminar-btn">Eliminar</button>
+                </div>
+            `;
+            autoList.appendChild(card);
+        });
+    }
+
+    // Evento para cambiar de sucursal
+    sucursalSelect.addEventListener('change', () => {
+        const sucursalId = sucursalSelect.value;
+        obtenerAutosPorSucursal(sucursalId);
+    });
+
+    // Evento para agregar auto (pendiente de implementar el modal/form)
+    agregarAutoBtn.addEventListener('click', () => {
+        alert('Formulario para agregar un auto (Pendiente)');
+        // Aquí podrías abrir un modal para agregar un auto
+    });
+
+    // Inicialización al cargar la página (obtener autos de la sucursal por defecto)
+    obtenerAutosPorSucursal(sucursalSelect.value);
+</script>
+
+</body>
+</html>
